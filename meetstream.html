@@ -111,8 +111,8 @@
   ┌──────────────────────────────────────────────────────┐
   │         FastAPI Backend · Railway service            │
   │                                                      │
-  │   Webhook API    MCP Server     Meeting     Auth &amp;   │
-  │                  (9 tools +       API       Members  │
+  │   Webhook API    MCP Server    Meeting &amp;    Auth &amp;   │
+  │                  (9 tools +    Graph API    Members  │
   │                  chat-relay)                  API    │
   │        └──────────────┴────────────┴──────────┘      │
   │                        ▼                             │
@@ -130,7 +130,7 @@
              REST API (session cookie)
                         │
             React 19 + Vite Dashboard · Railway
-          Day view · Search · Agent · Members · Auth</div>
+       Day view · Notebook · Agent · Members · Auth</div>
     </div>
   </section>
 
@@ -149,6 +149,9 @@
         <li class="reveal"><strong>Member accounts and access control:</strong> a Members page for sharing the join code, adding people, resetting a teammate's password, and removing someone — removal revokes the live session immediately, not just future logins.</li>
         <li class="reveal"><strong>Multi-agent management:</strong> create, switch, and activate multiple MIA agent configs from the dashboard. Activating one auto-repairs its MCP and database wiring if it was set up outside the app, and ownership is per-member rather than shared across the workspace.</li>
         <li class="reveal"><strong>Masked credentials panel:</strong> Agent Settings shows <em>which</em> provider credentials are configured — MeetStream key, extraction LLM, the workspace's MCP token — without ever exposing a full secret value.</li>
+        <li class="reveal"><strong>Notebook — search plus a knowledge graph:</strong> hybrid search and a force-directed graph in one page. The graph is <em>derived</em> from data already stored — meetings, participants, memories, action items — rather than run through a second extraction pipeline, so it stays in sync for free: people link to the meetings they attended and the memories they spoke; meetings link to their customers, projects, and outputs.</li>
+        <li class="reveal"><strong>Date-aware retrieval:</strong> a query naming a day promotes results actually <em>from</em> that day over ones merely discussing it. Relative words inside transcripts are resolved at index time against the meeting's own date — not against whenever the search runs — so "yesterday" spoken in an old call can't collide with an unrelated query that also says "yesterday".</li>
+        <li class="reveal"><strong>Retroactive import:</strong> meetings launched directly in MeetStream, outside the dashboard, can be pulled in afterwards — landing on their real start date with the bot's own name as the title.</li>
         <li class="reveal"><strong>Company knowledge RAG:</strong> PDFs, DOCX, TXT, MD and CSV upload into a separate knowledge base the agent also draws on.</li>
       </ul>
     </div>
@@ -171,6 +174,17 @@
       <div class="case-section-content">
         <p class="reveal">The first version had one shared workspace, which was fine while I was the only user. Opening signup turned that into a real data-exposure problem overnight: anyone who created an account could see every meeting already in the system. I closed signup the same day and rebuilt the data model around genuine tenancy — every meeting, memory, document and agent scoped to an <code>organization_id</code> resolved from the caller's session.</p>
         <p class="reveal">The subtler bug surfaced afterwards. Agent activation, agent updates, and the chat relay all accepted a client-supplied agent or meeting ID and performed <em>no ownership check</em> — so one workspace could hijack or overwrite another workspace's live agent, or post into another workspace's meeting chat. Listing agents had the mirror-image flaw, showing every agent on the underlying MeetStream account rather than the ones this workspace created. Both are now ownership-verified server-side, and there is an integration test suite (<code>test_tenant_isolation_integration.py</code>, <code>test_security.py</code>) whose whole job is to fail if that boundary regresses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container">
+      <div class="case-section-title reveal">Retrieval Note — Recall the Index Was Quietly Dropping</div>
+      <div class="case-section-content">
+        <p class="reveal">Search kept missing results a human could see were relevant — not ranking them low, omitting them. The ranking layer looked fine, so the fault was upstream of it.</p>
+        <p class="reveal">The vector index is <code>ivfflat</code> with <code>lists=100</code>, and pgvector defaults to <code>probes=1</code> — each query scans roughly <strong>1% of the index's clusters</strong>. That's a sane trade at the 100k-row scale the index is tuned for; at a single workspace's real data volume it means genuinely relevant rows are never examined at all. Raising probes to 10 buys back the recall for a small, bounded amount of query time, and still scales as the table grows.</p>
+        <p class="reveal">The second half was semantic rather than mechanical. Asking "what did we decide on September 2" was surfacing a meeting from the 3rd where someone <em>recapped</em> the 2nd, ahead of the actual September 2 meeting — both are textually about that date, so pure similarity can't separate them. Results now get a stable date-match boost, and relative words like "yesterday" are resolved when content is indexed, against the meeting's own date rather than the moment of the search. Resolving them at search time instead would make every old transcript saying "yesterday" collide with any query that happens to say it too.</p>
       </div>
     </div>
   </section>
