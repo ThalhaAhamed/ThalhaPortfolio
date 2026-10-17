@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#F5F5F5">
-  <title>MeetStream Companion — Thalha Ahamed</title>
-  <meta name="description" content="MeetStream Companion: a persistent AI meeting companion that deploys a live in-meeting agent, remembers every call in PostgreSQL + pgvector, and serves that memory back through an MCP server.">
+  <title>Meet Companion — Thalha Ahamed</title>
+  <meta name="description" content="Meet Companion: an open-source, self-hosted meeting knowledge base. A bot joins your call; the transcript becomes searchable Markdown notes, decisions and action items — on your machine, with the AI model and database you choose.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
       </div>
       <div class="nav-cta-group">
         <a class="nav-cta" href="https://www.linkedin.com/in/thalha-ahamed-01144142b/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="nav-cta" href="https://github.com/ThalhaAhamed/MeetStream-Companion" target="_blank" rel="noopener">GitHub</a>
+        <a class="nav-cta" href="https://github.com/meetstream-ai/companion" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </nav>
@@ -46,11 +46,11 @@
     <div class="container">
       <a href="index.html#projects" class="case-back">← Back to Portfolio</a>
       <div class="case-meta reveal">Project 05 · Agentic AI &amp; RAG</div>
-      <h1 class="case-title reveal">MeetStream<br>Companion</h1>
-      <p class="case-tagline reveal">A deployed, multi-tenant AI meeting companion — it puts a voice agent into your calls, remembers every meeting in PostgreSQL + pgvector, and serves that memory back to the live agent through MCP. Each workspace's data is isolated from every other.</p>
+      <h1 class="case-title reveal">Meet<br>Companion</h1>
+      <p class="case-tagline reveal">An open-source, self-hosted meeting knowledge base. A bot joins your call; what was said comes back as searchable Markdown notes, decisions and action items — on your machine, with the AI model and database you choose. Shipped as a desktop app for Windows, macOS and Linux.</p>
       <div class="case-actions reveal">
-        <a href="https://meetstreamcompanion.up.railway.app" target="_blank" rel="noopener" class="btn-primary">Try it now <span class="arrow">↗</span></a>
-        <a href="https://github.com/ThalhaAhamed/MeetStream-Companion" target="_blank" rel="noopener" class="btn-secondary">View on GitHub <span class="arrow">↗</span></a>
+        <a href="https://github.com/meetstream-ai/companion" target="_blank" rel="noopener" class="btn-primary">View on GitHub <span class="arrow">↗</span></a>
+        <a href="https://meetstream.ai/blog/ai-meeting-knowledge-base/" target="_blank" rel="noopener" class="btn-secondary">Read the guide <span class="arrow">↗</span></a>
       </div>
     </div>
   </section>
@@ -60,37 +60,38 @@
     <div class="container">
       <div class="case-section-title reveal">Overview</div>
       <div class="case-section-content">
-        <p class="reveal">Most meeting bots hand you a transcript and forget everything the moment the call ends. <strong>MeetStream Companion</strong> deploys a bot that joins the call, records and transcribes it, runs the transcript through an LLM to extract structured memory — decisions, commitments, requirements, concerns — and then makes that memory queryable.</p>
-        <p class="reveal">Queryable by two consumers: a <strong>live in-meeting agent</strong> that stays silent until addressed by name and can then answer "what did we decide about pricing three weeks ago?" mid-call, and a <strong>web dashboard</strong> for browsing meetings, searching memory, and managing agents.</p>
-        <p class="reveal">It runs as a real product, not a local dev toy — backend and frontend are separate Railway services, and it is genuinely multi-tenant: signing up creates a brand new empty <strong>workspace</strong> or joins an existing one by join code, and every meeting, memory, document, and agent belongs to exactly one of them.</p>
+        <p class="reveal">Most meeting bots hand you a transcript and forget everything the moment the call ends. A pile of transcripts is an archive, not a memory — nobody reopens forty of them, so decisions get re-debated and action items quietly expire.</p>
+        <p class="reveal"><strong>Meet Companion</strong> closes that gap. A bot joins the Google Meet, Zoom or Teams call through MeetStream; when it ends, the transcript is retrieved automatically, run through <em>your</em> chosen LLM to extract decisions, commitments and action items, and filed as organised Markdown notes you can search by meaning, question with sources, and have an in-call agent recall during the next meeting.</p>
+        <p class="reveal">The design constraint that shapes everything else: <strong>none of it has to leave your machine.</strong> SQLite and a local Ollama model need no API keys at all. Embeddings are always computed locally. Bring your own AI — OpenAI, Anthropic, Gemini, Groq, xAI, Ollama, or any OpenAI-compatible endpoint — and your own database, from local SQLite up to Postgres on Supabase, Neon or Railway.</p>
+        <p class="reveal">It ships as a signed-by-you desktop app for Windows, macOS and Linux, a Docker image, or from source. Contributed to the MeetStream organisation and released under MIT.</p>
       </div>
     </div>
   </section>
 
-  <!-- At a glance -->
+  <!-- At a glance -->  <!-- At a glance -->
   <section class="case-section">
     <div class="container">
       <div class="case-section-title reveal">At a Glance</div>
       <div class="about-stats reveal">
         <div class="stat">
-          <div class="stat-value">9</div>
-          <div class="stat-label">MCP tools exposed</div>
-          <div class="stat-src">1 date · 4 read · 4 write</div>
+          <div class="stat-value">7<span style="font-size:0.5em">+</span></div>
+          <div class="stat-label">LLM providers supported</div>
+          <div class="stat-src">Adapters, not conditionals</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">261</div>
+          <div class="stat-label">Automated tests</div>
+          <div class="stat-src">246 pytest &middot; 15 vitest</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Desktop platforms built on tag</div>
+          <div class="stat-src">~40 min from tag to release</div>
         </div>
         <div class="stat">
           <div class="stat-value">384<span style="font-size:0.5em">-d</span></div>
-          <div class="stat-label">Embedding dimension</div>
-          <div class="stat-src">all-MiniLM-L6-v2 · pgvector</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">10</div>
-          <div class="stat-label">Memory types in the schema</div>
-          <div class="stat-src">Decisions → unresolved questions</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">19</div>
-          <div class="stat-label">Automated tests</div>
-          <div class="stat-src">Unit · integration · security</div>
+          <div class="stat-label">Embeddings, computed locally</div>
+          <div class="stat-src">all-MiniLM-L6-v2 &middot; ONNX</div>
         </div>
       </div>
     </div>
@@ -100,37 +101,35 @@
   <section class="case-section">
     <div class="container">
       <div class="case-section-title reveal">Architecture</div>
-      <p class="case-video-desc reveal" style="margin-top:0;margin-bottom:1.5rem">The platform reaches the companion two ways — webhooks after a call, and MCP during one. Both are authenticated per workspace.</p>
-      <div class="case-arch reveal">                        MeetStream Platform
-        ┌──────────────┬────────────────┬────────────────┐
-        │ Bots (Calls) │ MIA Agent (AI) │   Transcripts  │
-        └──────┬───────┴───────┬────────┴───────┬────────┘
-               │               │                │
-           Webhooks     MCP + chat-relay     Webhooks
-               ▼               ▼                ▼
-  ┌──────────────────────────────────────────────────────┐
-  │         FastAPI Backend · Railway service            │
-  │                                                      │
-  │   Webhook API    MCP Server    Meeting &amp;    Auth &amp;   │
-  │                  (9 tools +    Graph API    Members  │
-  │                  chat-relay)                  API    │
-  │        └──────────────┴────────────┴──────────┘      │
-  │                        ▼                             │
-  │   Services:  MeetStream Client · Memory Extractor    │
-  │              Embeddings · Ingestion Pipeline         │
-  │                        ▼                             │
-  │   PostgreSQL 17 + pgvector                           │
-  │     organizations · users (members)                  │
-  │     meetings · participants · transcript_segments    │
-  │     memories · action_items                          │
-  │     meeting_memory_embeddings (vector 384)           │
-  │     company_knowledge_embeddings                     │
-  └──────────────────────────────────────────────────────┘
-                        ▲
-             REST API (session cookie)
-                        │
-            React 19 + Vite Dashboard · Railway
-       Day view · Notebook · Agent · Members · Auth</div>
+      <p class="case-video-desc reveal" style="margin-top:0;margin-bottom:1.5rem">Providers are interfaces, not conditionals — a new LLM vendor is one adapter plus a registry entry, and the adapter&rsquo;s declared fields <em>are</em> the settings form.</p>
+      <div class="case-arch reveal">  Desktop (Electron) ─┐
+  Browser            ─┼─▶  React UI  ─▶  FastAPI  ─▶  Services  ─▶  Providers
+  MeetStream agent ─▶ MCP server ─┘      (auth gate,                   │
+  MeetStream hooks ─▶ /api/webhooks       permissions)                 │
+                      (HMAC)                                           │
+                                                                       ▼
+     ┌─────────────────────────────────────────────────────────────────┐
+     │  LLM       OpenAI · Anthropic · Gemini · Groq · xAI · Ollama    │
+     │            · any OpenAI-compatible endpoint                     │
+     │  Database  SQLite (numpy search)                                │
+     │            PostgreSQL (pgvector + tsvector)                     │
+     │  Capture   MeetStream API — bots, transcripts                   │
+     └─────────────────────────────────────────────────────────────────┘
+
+  Meeting data flow
+  ─────────────────
+  Transcript (webhook or upload)
+        ▼
+  Segments → participants
+        ▼
+  LLM extraction → memories + action items
+  (structured JSON, validated; rule-based fallback if the provider fails)
+        ▼
+  Chunked, embedded locally (all-MiniLM-L6-v2, 384-d)
+        ▼
+  Markdown note written and filed
+        ▼
+  Searchable (RRF over vector + keyword) · Ask AI · MCP tools</div>
     </div>
   </section>
 
@@ -139,20 +138,17 @@
     <div class="container">
       <div class="case-section-title reveal">Key Features</div>
       <ul class="case-features">
-        <li class="reveal"><strong>Name-gated in-meeting agent:</strong> a MIA agent joins the Google Meet / Zoom / Teams call and stays silent until addressed by name — then answers from full historical context pulled out of past meetings.</li>
-        <li class="reveal"><strong>Hybrid RAG memory:</strong> transcripts and extracted memories are embedded and indexed with <em>Reciprocal Rank Fusion</em> — vector similarity fused with Postgres full-text search, so exact terms like names and dates aren't lost to embedding-only ranking.</li>
-        <li class="reveal"><strong>MCP server, 9 tools:</strong> a date-resolution tool (the model has no built-in sense of "today"), four read tools, and four write tools — all workspace-scoped and audit-logged. Every response renders as plain natural language rather than raw JSON, so it reads cleanly if it reaches meeting chat.</li>
-        <li class="reveal"><strong>On-demand chat sharing:</strong> a separate <code>share_in_chat</code> function posts to the meeting chat only when a speaker explicitly asks — tool output is never dumped into chat automatically.</li>
-        <li class="reveal"><strong>Chat-based join greeting:</strong> realtime voice models ignore <code>first_message</code> and won't reliably introduce themselves out loud, so the bot posts its intro — who it is, how to address it, what it can do — into chat on join instead.</li>
-        <li class="reveal"><strong>Automated memory extraction:</strong> post-call transcripts are analysed by an LLM into ten categorised memory types — decisions, commitments, requirements, concerns, facts, unresolved questions and more — plus tracked action items.</li>
-        <li class="reveal"><strong>Real multi-tenant workspaces:</strong> signup creates a new workspace or joins one by code. Every table is scoped by <code>organization_id</code>, every route resolves it from the session rather than a hardcoded default, and each workspace's MCP calls carry <em>their own</em> bearer token — so one workspace's agent can never read another's data.</li>
-        <li class="reveal"><strong>Member accounts and access control:</strong> a Members page for sharing the join code, adding people, resetting a teammate's password, and removing someone — removal revokes the live session immediately, not just future logins.</li>
-        <li class="reveal"><strong>Multi-agent management:</strong> create, switch, and activate multiple MIA agent configs from the dashboard. Activating one auto-repairs its MCP and database wiring if it was set up outside the app, and ownership is per-member rather than shared across the workspace.</li>
-        <li class="reveal"><strong>Masked credentials panel:</strong> Agent Settings shows <em>which</em> provider credentials are configured — MeetStream key, extraction LLM, the workspace's MCP token — without ever exposing a full secret value.</li>
-        <li class="reveal"><strong>Notebook — search plus a knowledge graph:</strong> hybrid search and a force-directed graph in one page. The graph is <em>derived</em> from data already stored — meetings, participants, memories, action items — rather than run through a second extraction pipeline, so it stays in sync for free: people link to the meetings they attended and the memories they spoke; meetings link to their customers, projects, and outputs.</li>
-        <li class="reveal"><strong>Date-aware retrieval:</strong> a query naming a day promotes results actually <em>from</em> that day over ones merely discussing it. Relative words inside transcripts are resolved at index time against the meeting's own date — not against whenever the search runs — so "yesterday" spoken in an old call can't collide with an unrelated query that also says "yesterday".</li>
-        <li class="reveal"><strong>Retroactive import:</strong> meetings launched directly in MeetStream, outside the dashboard, can be pulled in afterwards — landing on their real start date with the bot's own name as the title.</li>
-        <li class="reveal"><strong>Company knowledge RAG:</strong> PDFs, DOCX, TXT, MD and CSV upload into a separate knowledge base the agent also draws on.</li>
+        <li class="reveal"><strong>Bring your own AI:</strong> OpenAI, Anthropic, Gemini, Groq, xAI, a local Ollama model, or any OpenAI-compatible endpoint — switchable at any time from Settings, because each vendor is an adapter in <code>app/providers/llm/</code> rather than a branch in the pipeline.</li>
+        <li class="reveal"><strong>Your data stays where you put it:</strong> SQLite by default; PostgreSQL, Supabase, Neon or Railway when you want it. The database is <em>swapped, not abstracted</em> — only similarity and keyword search differ between them, and those live behind one provider interface chosen from the live connection&rsquo;s dialect.</li>
+        <li class="reveal"><strong>Fully offline is real:</strong> Ollama plus SQLite means nothing leaves the machine and no API key is needed. Embeddings are computed locally either way.</li>
+        <li class="reveal"><strong>Notes, not a feed:</strong> each meeting is filed as a Markdown note under <code>Meetings / year / month</code>, with folders, tags, favourites and a real editor behind the rendered view.</li>
+        <li class="reveal"><strong>Action items that sync both ways:</strong> tick a checkbox in a note and the task completes; write <code>- [ ] call Bob</code> in any note and it becomes a real tracked task.</li>
+        <li class="reveal"><strong>Ask AI, grounded:</strong> answers drawn from notes, meetings and uploaded documents (PDF, Word, Markdown, CSV) with links back to every source — it cites rather than invents.</li>
+        <li class="reveal"><strong>Hybrid semantic search:</strong> reciprocal rank fusion over vector similarity and keyword hits, so exact terms like names and dates survive alongside meaning.</li>
+        <li class="reveal"><strong>Knowledge graph:</strong> meetings, people, decisions and action items as an explorable graph, derived from stored data rather than a second extraction pass.</li>
+        <li class="reveal"><strong>In-call recall:</strong> a built-in MCP server the in-meeting agent queries live — "what did we decide last time?" answered mid-call.</li>
+        <li class="reveal"><strong>Workspaces with real permissions:</strong> share by join code; owners approve who gets in and decide per-member what they may add, edit, delete, export or invite. Every query is scoped to the caller&rsquo;s <code>organization_id</code> in the repository layer — there is no path that reads a row by id alone.</li>
+        <li class="reveal"><strong>Zero-setup first launch:</strong> no <code>.env</code>, no database setup, no migrations — the app creates and upgrades its own Alembic-managed schema on first run.</li>
       </ul>
     </div>
   </section>
@@ -189,6 +185,16 @@
     </div>
   </section>
 
+  <section class="case-section">
+    <div class="container">
+      <div class="case-section-title reveal">Shipping It</div>
+      <div class="case-section-content">
+        <p class="reveal">A self-hosted app is only as good as its install story, so the release path is automated end to end. Every push and pull request runs the backend suite twice — once on SQLite, once on PostgreSQL with pgvector — because the database is a swappable provider and a green run on one proves nothing about the other. The same workflow lints, tests and builds the frontend, runs <code>pip-audit</code>, and builds the Docker image <em>and boots it</em>, so a broken container fails CI rather than a user's first launch.</p>
+        <p class="reveal">Tagging <code>v*</code> stamps the version from the tag, freezes the server with PyInstaller, and builds and attaches Windows, macOS and Linux installers to a GitHub release — roughly <strong>40 minutes from tag to published</strong>. First launch needs no <code>.env</code>, no database setup and no migrations: the app writes its own config and upgrades its own schema.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Tech Stack -->
   <section class="case-section">
     <div class="container">
@@ -199,57 +205,60 @@
           <div class="case-tech-badges">
             <span class="case-tech-badge">Python 3.12</span>
             <span class="case-tech-badge">FastAPI</span>
-            <span class="case-tech-badge">Uvicorn</span>
-            <span class="case-tech-badge">SQLAlchemy (async)</span>
-            <span class="case-tech-badge">Pydantic</span>
+            <span class="case-tech-badge">SQLAlchemy 2 (async)</span>
+            <span class="case-tech-badge">Alembic</span>
+            <span class="case-tech-badge">httpx</span>
           </div>
         </div>
         <div class="case-tech-group">
           <h5>Data &amp; Retrieval</h5>
           <div class="case-tech-badges">
-            <span class="case-tech-badge">PostgreSQL 17</span>
-            <span class="case-tech-badge">pgvector</span>
-            <span class="case-tech-badge">asyncpg</span>
-            <span class="case-tech-badge">sentence-transformers</span>
+            <span class="case-tech-badge">SQLite</span>
+            <span class="case-tech-badge">PostgreSQL + pgvector</span>
+            <span class="case-tech-badge">tsvector</span>
+            <span class="case-tech-badge">Local ONNX embeddings</span>
             <span class="case-tech-badge">all-MiniLM-L6-v2</span>
             <span class="case-tech-badge">Reciprocal Rank Fusion</span>
           </div>
         </div>
         <div class="case-tech-group">
-          <h5>Agent &amp; LLM</h5>
+          <h5>AI Providers</h5>
           <div class="case-tech-badges">
-            <span class="case-tech-badge">MCP (JSON-RPC 2.0)</span>
-            <span class="case-tech-badge">MeetStream MIA</span>
-            <span class="case-tech-badge">Groq</span>
             <span class="case-tech-badge">OpenAI</span>
             <span class="case-tech-badge">Anthropic</span>
+            <span class="case-tech-badge">Gemini</span>
+            <span class="case-tech-badge">Groq</span>
+            <span class="case-tech-badge">xAI</span>
+            <span class="case-tech-badge">Ollama</span>
           </div>
         </div>
         <div class="case-tech-group">
-          <h5>Auth &amp; Security</h5>
-          <div class="case-tech-badges">
-            <span class="case-tech-badge">Session cookies</span>
-            <span class="case-tech-badge">Per-workspace bearer tokens</span>
-            <span class="case-tech-badge">HMAC-signed webhooks</span>
-            <span class="case-tech-badge">Replay protection</span>
-            <span class="case-tech-badge">Org-scoped repositories</span>
-          </div>
-        </div>
-        <div class="case-tech-group">
-          <h5>Frontend</h5>
+          <h5>Frontend &amp; Desktop</h5>
           <div class="case-tech-badges">
             <span class="case-tech-badge">React 19</span>
-            <span class="case-tech-badge">Vite 8</span>
-            <span class="case-tech-badge">oxlint</span>
+            <span class="case-tech-badge">Vite</span>
+            <span class="case-tech-badge">Tailwind CSS 4</span>
+            <span class="case-tech-badge">Electron</span>
+            <span class="case-tech-badge">PyInstaller</span>
           </div>
         </div>
         <div class="case-tech-group">
-          <h5>Ops</h5>
+          <h5>Integration</h5>
           <div class="case-tech-badges">
-            <span class="case-tech-badge">Railway</span>
-            <span class="case-tech-badge">Docker</span>
-            <span class="case-tech-badge">Cloudflare Tunnel (dev)</span>
+            <span class="case-tech-badge">MeetStream bots</span>
+            <span class="case-tech-badge">MCP server</span>
+            <span class="case-tech-badge">HMAC-signed webhooks</span>
+          </div>
+        </div>
+        <div class="case-tech-group">
+          <h5>Testing &amp; CI</h5>
+          <div class="case-tech-badges">
             <span class="case-tech-badge">pytest</span>
+            <span class="case-tech-badge">vitest</span>
+            <span class="case-tech-badge">oxlint</span>
+            <span class="case-tech-badge">pip-audit</span>
+            <span class="case-tech-badge">Docker</span>
+            <span class="case-tech-badge">GitHub Actions</span>
           </div>
         </div>
       </div>
@@ -259,7 +268,8 @@
   <!-- Interface -->
   <section class="case-section">
     <div class="container">
-      <div class="case-section-title reveal">Interface</div>
+      <div class="case-section-title reveal">Interface — Earlier Hosted Build</div>
+      <p class="case-video-desc reveal" style="margin-top:0;margin-bottom:1.5rem">These are from the hosted multi-tenant version that preceded the desktop app, kept here because the memory pipeline they show is the same one the current build runs on.</p>
       <div class="case-gallery">
         <div class="case-gallery-item reveal" onclick="openLightbox('./meetstream.png')">
           <img src="./meetstream.png" alt="MeetStream Companion day view" loading="lazy">

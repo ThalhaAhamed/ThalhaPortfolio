@@ -1213,44 +1213,6 @@ body.cursor-ready .cursor-outline { opacity: 1; }
   color: rgba(255, 255, 255, 0.65);
 }
 
-/* "Live" marker — the tile itself is one <a>, so this is a badge, not a
-   nested link; the case page carries the actual Try-it-now button. */
-.ig-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  align-self: flex-start;
-  margin-bottom: 0.15rem;
-  padding: 0.2rem 0.5rem 0.2rem 0.45rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.12);
-  font-size: 0.5625rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-}
-
-.ig-live i {
-  width: 0.4rem;
-  height: 0.4rem;
-  flex: none;
-  border-radius: 50%;
-  background: #34D399;
-  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.65);
-  animation: ig-live-pulse 2s var(--ease-out) infinite;
-}
-
-@keyframes ig-live-pulse {
-  70%  { box-shadow: 0 0 0 0.35rem rgba(52, 211, 153, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ig-live i { animation: none; }
-}
-
 .ig-title {
   font-size: 1.25rem;
   font-weight: 500;
@@ -1513,6 +1475,104 @@ body.cursor-ready .cursor-outline { opacity: 1; }
   font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--foreground);
+}
+
+/* Current role — a live pulse instead of the completed tick. */
+.track-step.is-current::before { background: var(--foreground); opacity: 0.22; }
+
+.track-step.is-current .track-node {
+  border-color: var(--foreground);
+  background: var(--background);
+}
+
+.track-pulse {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+  animation: track-pulse 2.2s var(--ease-out) infinite;
+}
+
+@keyframes track-pulse {
+  70%  { box-shadow: 0 0 0 0.5rem rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track-pulse { animation: none; }
+}
+
+/* Contributions — repos shipped and posts written inside a role. */
+.contrib {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.contrib-head {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+
+.contrib-head + .contrib-list + .contrib-head { margin-top: 1.5rem; }
+
+.contrib-list {
+  display: grid;
+  gap: 0.85rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contrib-list li {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.contrib-list a,
+.contrib-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  justify-self: start;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--foreground);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s;
+}
+
+.contrib-list a:hover { border-bottom-color: var(--foreground); }
+.contrib-list a svg { flex: none; opacity: 0.55; }
+.contrib-list a:hover svg { opacity: 1; }
+.contrib-name { font-weight: 600; opacity: 0.62; }
+
+.contrib-list li > span:last-child {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+.contrib-soon {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  white-space: nowrap;
 }
 
 .exp-cert-link {
