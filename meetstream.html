@@ -268,28 +268,28 @@
   <!-- Interface -->
   <section class="case-section">
     <div class="container">
-      <div class="case-section-title reveal">Interface — Earlier Hosted Build</div>
-      <p class="case-video-desc reveal" style="margin-top:0;margin-bottom:1.5rem">These are from the hosted multi-tenant version that preceded the desktop app, kept here because the memory pipeline they show is the same one the current build runs on.</p>
+      <div class="case-section-title reveal">Interface</div>
+      <p class="case-video-desc reveal" style="margin-top:0;margin-bottom:1.5rem">The desktop build on Windows — the same app runs from Docker or source in a browser.</p>
       <div class="case-gallery">
         <div class="case-gallery-item reveal" onclick="openLightbox('./meetstream.png')">
-          <img src="./meetstream.png" alt="MeetStream Companion day view" loading="lazy">
+          <img src="./meetstream.png" alt="Meet Companion dashboard" loading="lazy">
           <div class="case-gallery-caption">
-            <h5>Day View</h5>
-            <p>Every meeting captured on a given day, with its generated summary, participants, and tabs into decisions, action items, and the raw transcript.</p>
+            <h5>Dashboard</h5>
+            <p>Everything outstanding, pulled from meetings and notes — open action items with owner and priority, and recent notes filed by date.</p>
           </div>
         </div>
-        <div class="case-gallery-item reveal" onclick="openLightbox('./meetstream_memories.png')">
-          <img src="./meetstream_memories.png" alt="MeetStream Companion decisions and memories" loading="lazy">
+        <div class="case-gallery-item reveal" onclick="openLightbox('./meetstream_settings.png')">
+          <img src="./meetstream_settings.png" alt="Meet Companion database settings" loading="lazy">
           <div class="case-gallery-caption">
-            <h5>Decisions &amp; Memories</h5>
-            <p>Structured memory extracted from the transcript — each item typed as a fact, decision, or commitment and attributed to the speaker it came from.</p>
+            <h5>Bring Your Own Database</h5>
+            <p>Local SQLite, self-run PostgreSQL, Supabase, Neon, Railway, or any other Postgres host — picked at runtime, with pgvector enabled automatically where permitted.</p>
           </div>
         </div>
         <div class="case-gallery-item reveal" onclick="openLightbox('./meetstream_agent.png')">
-          <img src="./meetstream_agent.png" alt="MeetStream Companion agent configuration" loading="lazy">
+          <img src="./meetstream_agent.png" alt="Meet Companion agent configuration" loading="lazy">
           <div class="case-gallery-caption">
-            <h5>Agent Configuration</h5>
-            <p>Saved agents with their provider, model, voice, and system prompt — switch the active companion without touching the backend.</p>
+            <h5>Agent</h5>
+            <p>Provider, model, voice and temperature per agent — and the activation rule that keeps it silent until a speaker addresses it by name.</p>
           </div>
         </div>
       </div>
